@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+</head>
+<style>
+.table{
+    width: 300px;
+    height: 300px;
+    border: 5px black solid;
+background: rgb(0,0,0);
+background: linear-gradient(352deg, rgba(0,0,0,1) 20%, rgba(245,245,245,1) 80%);
+
+    text-align: center;
+	margin:0 auto;
+
+}
+tr{
+    color: black;
+    font-size: 40px;
+background: rgb(131,58,180);
+background: linear-gradient(49deg, rgba(131,58,180,1) 0%, rgba(107,105,178,1) 10%, rgba(76,163,175,1) 22%, rgba(64,186,174,1) 29%, rgba(37,237,171,1) 42%, rgba(29,253,170,1) 48%, rgba(42,248,164,1) 48%, rgba(60,242,156,1) 53%, rgba(82,234,146,1) 55%, rgba(113,223,132,1) 62%, rgba(140,214,120,1) 67%, rgba(194,196,96,1) 78%, rgba(252,176,69,1) 100%);
+
+}
+td{
+    width: 50px;
+    height: 50px;
+    border: 5px black solid;
+ 
+}
+
+button{
+	margin-left:47%;
+}
+
+
+#result{
+margin-left:45%;
+font-size:40px;
+
+}
+</style>
+<body>
+
+        <table class="table">
+                <tr>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="11"></td>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="12"></td> 
+                  <td onclick="myFunc(this.getAttribute('id'))" id="13"></td>
+                </tr>
+                <tr>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="21"></td>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="22"></td>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="23"></td>
+                </tr>
+                <tr>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="31"></td>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="32"></td>
+                  <td onclick="myFunc(this.getAttribute('id'))" id="33"></td>
+                </tr>
+                
+              </table>
+              <button type="button" onclick="location.reload()">New Game</button>
+              <div id="result"></div>
+    
+</body>
+
+<script>
+
+var player=1;
+var counter = 0;
+
+
+function myFunc(id){
+
+   
+
+
+    if(player == 1 && document.getElementById(id).innerHTML == ''){
+        document.getElementById(id).innerHTML = 'X';
+        player = 2;
+
+    }else if(player == 2 && document.getElementById(id).innerHTML == ''){
+        document.getElementById(id).innerHTML = 'O';
+        player = 1;
+    }
+        var cell_1=document.getElementById('11').innerHTML;
+        var cell_2=document.getElementById('12').innerHTML;
+        var cell_3=document.getElementById('13').innerHTML;
+        var cell_4=document.getElementById('21').innerHTML;
+        var cell_5=document.getElementById('22').innerHTML;
+        var cell_6=document.getElementById('23').innerHTML;
+        var cell_7=document.getElementById('31').innerHTML;
+        var cell_8=document.getElementById('32').innerHTML;
+        var cell_9=document.getElementById('33').innerHTML;
+
+    if(counter >= 4 && cell_1 == cell_2 && cell_2 == cell_3 && cell_1 != ''){
+        document.getElementById('result').innerHTML = cell_1 +' '+ 'is the Winner'; 
+    
+    }
+     if(counter >= 4 && cell_4 == cell_5 && cell_5 == cell_6 && cell_4 != ''){
+        document.getElementById('result').innerHTML = cell_5 +' '+ 'is the Winner';
+        //console.log(cell_4,cell_5,cell_6);
+    }
+ 
+    else if(counter >= 4 && cell_7 == cell_8 && cell_8 == cell_9&& cell_7 != ''){
+        document.getElementById('result').innerHTML = cell_1 +' '+ 'is the Winner'; 
+    }
+    else if(counter >= 4 && cell_1 == cell_4 && cell_4 == cell_7&& cell_1 != ''){
+        document.getElementById('result').innerHTML = cell_1 +' '+ 'is the Winner'; 
+    }
+    else if(counter >= 4 && cell_2 == cell_5 && cell_5 == cell_8&& cell_2 != ''){
+        document.getElementById('result').innerHTML = cell_2 +' '+ 'is the Winner'; 
+    }
+    else if(counter >= 4 && cell_3 == cell_6 && cell_6 == cell_9&& cell_3 != ''){
+        document.getElementById('result').innerHTML = cell_3 +' '+ 'is the Winner'; 
+    }
+
+
+    else if(counter >= 4 && cell_1 == cell_5 && cell_5 == cell_9&& cell_1 != ''){
+        document.getElementById('result').innerHTML = cell_1 +' '+ 'is the Winner'; 
+    }
+    else if(counter >= 4 && cell_3 == cell_5 && cell_5 == cell_7&& cell_3 != ''){
+        document.getElementById('result').innerHTML = cell_2 +' '+ 'is the Winner'; 
+    } 
+    counter++;
+
+   
+}
+</script>
+</html>
+
+
+
+
+<!-- -------------------------- { Fahim Solution } ------------------------------->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    td{
+      width: 100px;
+      height: 100px;
+      background-color: cadetblue;
+      border: solid brown 1px;
+      display: inline-flex;
+      justify-content: center;
+      align-content: center;
+      margin-left: 2px;
+      color: red;
+      font-size: 50px;
+      align-items: center;
+      justify-items: center;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td id="_1" onclick="playGame(this.id)"></td>
+      <td id="_2" onclick="playGame(this.id)"></td>
+      <td id="_3" onclick="playGame(this.id)"></td>
+    </tr>
+    <tr>
+      <td id="_4" onclick="playGame(this.id)"></td>
+      <td id="_5" onclick="playGame(this.id)"></td>
+      <td id="_6" onclick="playGame(this.id)"></td>
+    </tr>
+    <tr>
+      <td id="_7" onclick="playGame(this.id)"></td>
+      <td id="_8" onclick="playGame(this.id)"></td>
+      <td id="_9" onclick="playGame(this.id)"></td>
+    </tr>
+  </table>
+  <button type="button" onclick="location.reload()">New Game</button>
+  <script>
+    var player = 'P1';
+    var result = [];
+    var winner = '';
+
+    var counter = 1;
+    var finish = false;
+
+    function playGame(id){
+      var selectedElement = document.getElementById(id);
+      if(selectedElement.innerHTML == '' && player == 'P1' && !finish){
+        //selectedElement.innerHTML = "<img src='./img/x.png'>";
+        selectedElement.innerHTML = 'X';
+        player = 'P2';
+      }else if(selectedElement.innerHTML == '' && player == 'P2' && !finish){
+        //selectedElement.innerHTML = "<img src='./img/o.png'>";
+        selectedElement.innerHTML = 'O';
+        player = 'P1';
+      }
+      
+        if(counter >=5 && !finish){
+          for(i=1; i<=9; i++){
+            myId = '_'+i;
+            result[i] = document.getElementById(myId).innerHTML;
+          }
+          if(result[1] == result[2] && result[2] == result[3] && result[1] != ''){
+              winner = result[1];
+          }
+          if(result[4] == result[5] && result[5] == result[6] && result[4] != ''){
+              winner = result[4];
+          }
+          if(result[7] == result[8] && result[8] == result[9] && result[7] != ''){
+              winner = result[7];
+          }
+          if(result[1] == result[4] && result[4] == result[7] && result[1] != ''){
+              winner = result[1];
+          }
+          if(result[2] == result[5] && result[5] == result[8] && result[2] != ''){
+              winner = result[2];
+          }
+          if(result[3] == result[6] && result[6] == result[9] && result[3] != ''){
+              winner = result[3];
+          }
+          if(result[1] == result[5] && result[5] == result[9] && result[1] != ''){
+              winner = result[1];
+          }
+          if(result[3] == result[5] && result[5] == result[7] && result[3] != ''){
+              winner = result[3];
+          } -->
